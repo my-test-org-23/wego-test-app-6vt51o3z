@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-d6w3c9
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-d6w3c9
+  namespace: my-nginx-d6w3c9
+  labels:
+    name: nginx-d6w3c9
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-d6w3c9
+  template:
+    metadata:
+      namespace: my-nginx-d6w3c9
+      labels:
+        name: nginx-d6w3c9
+    spec:
+      containers:
+      - name: nginx-d6w3c9
+        image: nginx
+        ports:
+        - containerPort: 80
+
